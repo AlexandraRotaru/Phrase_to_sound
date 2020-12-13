@@ -23,6 +23,9 @@ def readFiles():
                 except:
                     print("The file could not be open.")
 
+                finally:
+                    f.close()
+
 
 if __name__ == "__main__":
     input = sys.argv[1]

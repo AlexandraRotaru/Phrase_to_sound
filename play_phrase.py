@@ -1,6 +1,7 @@
 import tkinter as tk
+
+import playsound
 from gtts import gTTS
-import os
 
 
 def play():
@@ -11,7 +12,10 @@ def play():
         speech.save("phrase.mp3")
 
         try:
-            os.system("afplay phrase.mp3")
+            # wait for the sound to finish playing
+            blocking = True
+            playsound.playsound("phrase.mp3", block=blocking)
+
         except Exception as e:
             print("Exeception: " + str(e))
 
