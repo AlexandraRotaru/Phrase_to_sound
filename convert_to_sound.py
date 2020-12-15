@@ -4,8 +4,8 @@ from gtts import gTTS
 
 
 def readFiles():
-    if os.path.isdir(input) and os.path.isdir(output):
-        for root, directories, files in os.walk(input):
+    if os.path.isdir(inputDir) and os.path.isdir(outputDir):
+        for root, directories, files in os.walk(inputDir):
             for file in files:
                 full_path = os.path.abspath(os.path.join(root, file))
 
@@ -15,19 +15,16 @@ def readFiles():
 
                     if line:
                         speech = gTTS(line, lang='en', slow=False)
-                        path_for_output = os.path.abspath(os.getcwd()) + "/" + output + "/" + file.split(".")[0];
+                        path_for_output = os.path.abspath(os.getcwd()) + "/" + outputDir + "/" + str(file.split(".")[0])
                         speech.save(path_for_output + ".mp3")
 
                     f.close()
 
-                except:
-                    print("The file could not be open.")
-
-                finally:
-                    f.close()
+                except Exception as e:
+                    print("Error: " + str(e))
 
 
 if __name__ == "__main__":
-    input = sys.argv[1]
-    output = sys.argv[2]
+    inputDir = sys.argv[1]
+    outputDir = sys.argv[2]
     readFiles()

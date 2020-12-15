@@ -11,13 +11,7 @@ def play():
         speech = gTTS(phrase, lang='en', slow=False)
         speech.save("phrase.mp3")
 
-        try:
-            # wait for the sound to finish playing
-            blocking = True
-            playsound.playsound("phrase.mp3", block=blocking)
-
-        except Exception as e:
-            print("Exeception: " + str(e))
+        playsound.playsound("phrase.mp3")
 
 
 def userInterface():
@@ -45,8 +39,8 @@ def userInterface():
                             command=play)
     play_button.pack()
 
-    # mainloop() is used when your application is ready to run.mainloop() is an infinite loop used to run the application,
-    # wait for an event to occur and process the event as long as the window is not closed.
+    # mainloop() is used when your application is ready to run. mainloop() is an infinite loop used to run the
+    # application, wait for an event to occur and process the event as long as the window is not closed.
     window.mainloop()
 
 
