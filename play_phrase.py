@@ -2,6 +2,17 @@ import tkinter as tk
 
 import playsound
 from gtts import gTTS
+from random import randint
+
+
+def generateRandomName():
+    ch = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm1234567890"
+    randomName = ""
+
+    for i in range(randint(5, 15)):
+        randomName += ch[randint(0, len(ch) - 1)]
+
+    return randomName
 
 
 def play():
@@ -9,9 +20,12 @@ def play():
 
     if phrase:
         speech = gTTS(phrase, lang='en', slow=False)
-        speech.save("phrase.mp3")
+        randomName = generateRandomName()
+        path = "/Users/alexandra-beatricerotaru/Desktop/Phrase_to_sound/output/" + randomName + ".mp3"
 
-        playsound.playsound("phrase.mp3")
+        speech.save(path)
+
+        playsound.playsound(path)
 
 
 def userInterface():
