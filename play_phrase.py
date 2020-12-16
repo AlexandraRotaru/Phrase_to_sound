@@ -37,7 +37,7 @@ def userInterface():
     frame.pack(padx=30, pady=30)
 
     title = tk.Label(frame,
-                     text="Phrase to soung Application",
+                     text="Phrase to sound Application",
                      foreground="red")
     title.pack()
 
